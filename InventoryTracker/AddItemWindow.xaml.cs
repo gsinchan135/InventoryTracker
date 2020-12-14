@@ -18,27 +18,33 @@ namespace InventoryTracker
     /// </summary>
     public partial class AddItemWindow : Window
     {
-        private bool _saved = false;
         public AddItemWindow()
         {
             InitializeComponent();
         }
+
+        //public bool saved { get; private set; }
+
         public string newName
         {
             get { return item.Text; }
         }
+
         public string newCategory
         {
             get { return category.Text; }
         }
+
         public string newLocation
         {
             get { return location.Text; }
         }
+
         public string newSupplier
         {
             get { return supplier.Text; }
         }
+
         public int newAvailableQnty
         {
             get 
@@ -52,6 +58,7 @@ namespace InventoryTracker
                 throw new ArgumentOutOfRangeException("Error. Available Quantity is not a valid number");
             }
         }
+
         public int newMinQnty
         {
             get 
@@ -65,14 +72,10 @@ namespace InventoryTracker
                 throw new ArgumentOutOfRangeException("Error. Minimum Quantity is not a valid number");
             }
         }
-        public bool saved
-        {
-            get { return _saved; }
-        }
+
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            _saved = true;
-            Application.Current.Windows[1].Close();
+            (((e.OriginalSource as Button).Parent as Grid).Parent as Window).Close();
         }
 
         private void numValidation(object sender, TextCompositionEventArgs e)

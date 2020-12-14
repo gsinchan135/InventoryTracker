@@ -35,19 +35,17 @@ namespace InventoryTracker
         {
             AddItemWindow addItem = new AddItemWindow();
             addItem.ShowDialog();
-            if (addItem.saved)
+
+            try
             {
-                try
-                {
-                    Item anitem = new Item(addItem.newName, addItem.newAvailableQnty, addItem.newMinQnty, addItem.newLocation, addItem.newSupplier, addItem.newCategory);
-                    inv.AddItem(anitem);
-                    showInventory.Items.Add(anitem);
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message, "Invalid Number", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }          
+                Item anitem = new Item(addItem.newName, addItem.newAvailableQnty, addItem.newMinQnty, addItem.newLocation, addItem.newSupplier, addItem.newCategory);
+                inv.AddItem(anitem);
+                showInventory.Items.Add(anitem);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Invalid Number", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)
@@ -109,6 +107,7 @@ namespace InventoryTracker
             {
                 Filter = "CSV File|*.csv"
             };
+
             try
             {
                 if ((bool)dialog.ShowDialog())
