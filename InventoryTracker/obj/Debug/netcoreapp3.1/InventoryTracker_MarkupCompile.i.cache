@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\App.xaml
-21937882093
+41263410478
 
-5-1889393245
+9-640665083
 1921654412462
-AddItemWindow.xaml;MainWindow.xaml;
+AddItemWindow.xaml;GeneralReport.xaml;MainWindow.xaml;ShoppingList.xaml;
 
 False
 
