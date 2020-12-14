@@ -4,23 +4,10 @@ using System.Text;
 
 namespace InventoryTracker.Models
 {
-    enum itemData
-    {
-        name,
-        availableQuantity,
-        minimumQuantity,
-        location,
-        supplier,
-        category
-    };
     class Item
     {
-        public string ItemName { get; set; }
         private int _availableQuantity;
         private int _minimumQuantity;
-        public string Location { get; set; }
-        public string Supplier { get; set; }
-        public string Category { get; set; }
 
         public Item(string itemName, int availableQuantity, int minimumQuantity, string location, string supplier, string category)
         {
@@ -32,6 +19,21 @@ namespace InventoryTracker.Models
             Category = category;
         }
 
+        //used for enumerating load
+        public enum itemData
+        {
+            name,
+            availableQuantity,
+            minimumQuantity,
+            location,
+            supplier,
+            category
+        };
+
+        public string ItemName { get; set; }
+        public string Location { get; set; }
+        public string Supplier { get; set; }
+        public string Category { get; set; }
 
         public int AvailableQuantity
         {
@@ -56,7 +58,5 @@ namespace InventoryTracker.Models
                 _minimumQuantity = value;
             }
         }
-
-
     }
 }

@@ -49,10 +49,19 @@ namespace InventoryTracker
                 }
             }          
         }
+
         private void RemoveItem(object sender, RoutedEventArgs e)
         {
-            
+            inv.RemoveItem((Item)((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext);
+            showInventory.Items.Remove(((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext);
         }
+
+
+        private void UpdateItem(object sender, RoutedEventArgs e)
+        {
+            var tempItemDeleteMeLaterPlease = ((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
+        }
+
         private void CreateGeneralReport(object sender, RoutedEventArgs e)
         {
             string report = inv.GeneralReport();
