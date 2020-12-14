@@ -31,9 +31,18 @@ namespace InventoryTracker.Models
             }
         }
 
-        public void UpdateItem()
+        public Inventory UpdateItem(Item oldItem, Item updatedItem)
         {
-
+            int counter = 0;
+            foreach(Item item in GetItems)
+            {
+                if (item == oldItem)
+                    break;
+                counter++;
+            }
+            GetItems.Remove(oldItem);
+            GetItems.Insert(counter, updatedItem);
+            return this;
         }
 
         public string GeneralReport()

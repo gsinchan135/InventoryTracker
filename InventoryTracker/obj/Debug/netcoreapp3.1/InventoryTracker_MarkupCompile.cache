@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\
+C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\
 InventoryTracker
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\App.xaml
-41263410478
+C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\App.xaml
+5-642547236
 
-8-630002944
+9-1684834341
 1921654412462
-AddItemWindow.xaml;GeneralReport.xaml;MainWindow.xaml;ShoppingList.xaml;
+AddItemWindow.xaml;GeneralReport.xaml;MainWindow.xaml;ShoppingList.xaml;UpdateItem.xaml;
 
 False
 

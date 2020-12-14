@@ -44,7 +44,7 @@ namespace InventoryTracker
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message, "Invalid Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -57,7 +57,30 @@ namespace InventoryTracker
 
         private void UpdateItem(object sender, RoutedEventArgs e)
         {
-            var tempItemDeleteMeLaterPlease = ((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
+            int counter = 0;
+            Item oldItem = (Item)((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
+            UpdateItem update = new UpdateItem(oldItem.ItemName, oldItem.AvailableQuantity, oldItem.MinimumQuantity, oldItem.Location, oldItem.Supplier, oldItem.Category);
+            update.ShowDialog();
+
+            try
+            {
+                Item updatedItem = new Item(update.updatedName, update.updatedQuantity, update.updatedMinQuantity, update.updatedLocation, update.updatedSupplier, update.updatedCategory);
+                inv = inv.UpdateItem(oldItem, updatedItem);
+                foreach (Item item in showInventory.Items)
+                {
+                    if (item == oldItem)
+                        break;
+                    counter++;
+                }
+
+                showInventory.Items.Remove(oldItem);
+                showInventory.Items.Insert(counter, updatedItem);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
 
         private void CreateGeneralReport(object sender, RoutedEventArgs e)
