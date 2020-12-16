@@ -7,9 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AddItemWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="GeneralReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,14 +16,8 @@
     <Compile Update="ShoppingList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UpdateItem.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AddItemWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="GeneralReport.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -37,9 +28,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ShoppingList.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UpdateItem.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
