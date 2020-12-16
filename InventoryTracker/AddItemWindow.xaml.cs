@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,16 +19,31 @@ namespace InventoryTracker
     /// </summary>
     public partial class AddItemWindow : Window
     {
-        public AddItemWindow()
+        public AddItemWindow(object inv)
         {
             InitializeComponent();
+            ShowDialog();
+            Inventory inventory = inv as Inventory;
+            try
+            {
+                Item anitem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
+                
+                inventory.AddItem(anitem);
+            }
+            catch (Exception error)
+            {
+                    MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
-        //public bool saved { get; private set; }
 
         public string newName
         {
-            get { return item.Text; }
+            get 
+            { 
+                return item.Text; 
+            }
         }
 
         public string newCategory
@@ -51,7 +67,11 @@ namespace InventoryTracker
             {
                 bool pass;
                 int num;
+                if (availableQnty.Text == string.Empty)
+                    return -1;
+
                 pass = int.TryParse(availableQnty.Text, out num);
+                
                 if (pass && num >= 0)
                     return num;
 
@@ -65,6 +85,9 @@ namespace InventoryTracker
             {
                 bool pass;
                 int num;
+                if (minimumQnty.Text == string.Empty)
+                    return -1;
+
                 pass = int.TryParse(minimumQnty.Text, out num);
                 if (pass && num >= 0)
                     return num;
@@ -83,5 +106,6 @@ namespace InventoryTracker
             Regex reg = new Regex("[^0-9]+");
             e.Handled = reg.IsMatch(e.Text);
         }
+
     }
 }

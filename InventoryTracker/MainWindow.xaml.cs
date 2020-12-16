@@ -24,62 +24,33 @@ namespace InventoryTracker
  
     public partial class MainWindow : Window
     {
-        static Inventory inv = new Inventory();
+        Inventory inv = new Inventory();
 
         public MainWindow()
         {
             InitializeComponent();
+            showInventory.ItemsSource = inv.GetItems;
+
         }
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
-            AddItemWindow addItem = new AddItemWindow();
-            addItem.ShowDialog();
-
-            try
-            {
-                Item anitem = new Item(addItem.newName, addItem.newAvailableQnty, addItem.newMinQnty, addItem.newLocation, addItem.newSupplier, addItem.newCategory);
-                inv.AddItem(anitem);
-                showInventory.Items.Add(anitem);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            ItemWindow addItem = new ItemWindow(inv,true);
+            showInventory.Items.Refresh();
         }
 
         private void RemoveItem(object sender, RoutedEventArgs e)
         {
             inv.RemoveItem((Item)((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext);
-            showInventory.Items.Remove(((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext);
+            showInventory.Items.Refresh();
         }
 
 
         private void UpdateItem(object sender, RoutedEventArgs e)
         {
-            int counter = 0;
             Item oldItem = (Item)((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
-            UpdateItem update = new UpdateItem(oldItem.ItemName, oldItem.AvailableQuantity, oldItem.MinimumQuantity, oldItem.Location, oldItem.Supplier, oldItem.Category);
-            update.ShowDialog();
-
-            try
-            {
-                Item updatedItem = new Item(update.updatedName, update.updatedQuantity, update.updatedMinQuantity, update.updatedLocation, update.updatedSupplier, update.updatedCategory);
-                inv = inv.UpdateItem(oldItem, updatedItem);
-                foreach (Item item in showInventory.Items)
-                {
-                    if (item == oldItem)
-                        break;
-                    counter++;
-                }
-
-                showInventory.Items.Remove(oldItem);
-                showInventory.Items.Insert(counter, updatedItem);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            ItemWindow update = new ItemWindow(oldItem, false);
+            showInventory.Items.Refresh();
 
         }
 
@@ -104,18 +75,28 @@ namespace InventoryTracker
 
         private void LoadData(object sender, RoutedEventArgs e)
         {
-            showInventory.Items.Clear();
+            if(inv.GetItems.Count > 0)
+            {
+                MessageBoxResult result = MessageBox.Show("Loading a file will erase all current data. Would you like to save?", "Load data", MessageBoxButton.YesNoCancel);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        SaveData(sender, e);
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    case MessageBoxResult.Cancel:
+                        return;
+                }
+            }
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV FILE|*.csv";
             try
             {
                 if ((bool)openFileDialog.ShowDialog())
                 {
-                    inv = inv.LoadData(openFileDialog.FileName);
-                    foreach (Item anItem in inv.GetItems)
-                    {
-                        showInventory.Items.Add(anItem);
-                    }
+                    inv.LoadData(openFileDialog.FileName);
+                    showInventory.Items.Refresh();
                 }
             }
             catch (Exception error)

@@ -11,7 +11,7 @@ namespace InventoryTracker.Models
         {
             GetItems = new List<Item>();
         }
-
+        //make read only
         public List<Item> GetItems { get; }
 
         public void AddItem(Item item)
@@ -21,28 +21,19 @@ namespace InventoryTracker.Models
 
         public void RemoveItem(Item itemToRemove)
         {
-            foreach (Item item in GetItems)
-            {
-                if (item == itemToRemove)
-                {
-                    GetItems.Remove(item);
-                    break;
-                }
-            }
+            GetItems.Remove(itemToRemove);
         }
 
-        public Inventory UpdateItem(Item oldItem, Item updatedItem)
+        public void UpdateItem(Item oldItem, Item updatedItem)
         {
-            int counter = 0;
-            foreach(Item item in GetItems)
-            {
-                if (item == oldItem)
-                    break;
-                counter++;
-            }
-            GetItems.Remove(oldItem);
-            GetItems.Insert(counter, updatedItem);
-            return this;
+            //go field by field and change fields
+
+            oldItem.ItemName = updatedItem.ItemName;
+            oldItem.AvailableQuantity = updatedItem.AvailableQuantity;
+            oldItem.MinimumQuantity = updatedItem.MinimumQuantity;
+            oldItem.Location = updatedItem.Location;
+            oldItem.Supplier = updatedItem.Supplier;
+            oldItem.Category = updatedItem.Category;
         }
 
         public string GeneralReport()
@@ -76,7 +67,7 @@ namespace InventoryTracker.Models
             return shoppingList.ToString();
         }
 
-        public Inventory LoadData(string fileName)
+        public void LoadData(string fileName)
         {
             GetItems.Clear();
     
@@ -90,10 +81,10 @@ namespace InventoryTracker.Models
             string supplier;
             string category;
 
-
+            //File data must come in rows of 6 values, each seperated by a comma(,)
+            //specifically: string, int, int, string/int , string, string, string
             if (File.Exists(fileName))
             {
-                 Inventory inventory = new Inventory();
                  Item anItem;
                  StreamReader sr = new StreamReader(fileName);
                  while((line = sr.ReadLine()) != null)
@@ -113,12 +104,10 @@ namespace InventoryTracker.Models
                         category = values[(int)Item.itemData.category];
 
                         anItem = new Item(itemName, itemQnty, minQnty, location, supplier, category);
-                        inventory.GetItems.Add(anItem);
+                        this.GetItems.Add(anItem);
                     }                    
                  }
-                return inventory;
             }
-            return null;
         }
 
         public void SaveData(string fileName)
@@ -137,11 +126,6 @@ namespace InventoryTracker.Models
 
             using StreamWriter sr = new StreamWriter(fileName, false);
             sr.WriteLine(builder.ToString());
-
-            //streamWriter = new StreamWriter(fileName, false);
-            //streamWriter.WriteLine(builder.ToString());
-            //if(streamWriter != null)
-            //    streamWriter.Close();
         }
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="GeneralReport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ItemWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ShoppingList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GeneralReport.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ItemWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

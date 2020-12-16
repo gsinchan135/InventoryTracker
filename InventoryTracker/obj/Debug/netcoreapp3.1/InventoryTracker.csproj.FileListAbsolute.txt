@@ -48,3 +48,5 @@ C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netc
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\InventoryTracker.genruntimeconfig.cache
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\UpdateItem.g.cs
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\UpdateItem.baml
+C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.g.cs
+C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.baml

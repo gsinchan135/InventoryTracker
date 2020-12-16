@@ -29,7 +29,18 @@ namespace InventoryTracker.Models
             supplier,
             category
         };
-
+        
+        public enum Categories
+        {
+            Writing,
+            Math,
+            Science,
+            Sports,
+            Textbook,
+            Notebook,
+            Electronics
+        };
+        
         public string ItemName { get; set; }
         public string Location { get; set; }
         public string Supplier { get; set; }
