@@ -28,14 +28,12 @@ C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\bin\Debug\netc
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\bin\Debug\netcoreapp3.1\InventoryTracker.dll
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\bin\Debug\netcoreapp3.1\InventoryTracker.pdb
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\InventoryTracker.csprojAssemblyReference.cache
-C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\AddItemWindow.g.cs
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\GeneralReport.g.cs
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ShoppingList.g.cs
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\InventoryTracker_MarkupCompile.cache
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\InventoryTracker_MarkupCompile.lref
-C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\AddItemWindow.baml
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\GeneralReport.baml
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ShoppingList.baml
@@ -50,3 +48,5 @@ C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\UpdateItem.baml
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.g.cs
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.baml
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.g.cs
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.baml

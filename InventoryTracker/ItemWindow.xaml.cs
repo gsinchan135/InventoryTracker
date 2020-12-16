@@ -53,6 +53,7 @@ namespace InventoryTracker
                 newSupplier = item.Supplier;
                 newCategory = item.Category;
                 ShowDialog();
+
                 try
                 {
                     item.ItemName = newName;
@@ -97,49 +98,32 @@ namespace InventoryTracker
         {
             get
             {
-                bool pass;
                 int num;
-                if (availableQnty.Text == string.Empty)
-                    return -1;
-
+                bool pass;
                 pass = int.TryParse(availableQnty.Text, out num);
 
-                if (pass && num >= 0)
+                if (pass)
                     return num;
-
-                throw new ArgumentOutOfRangeException("Error. Available Quantity is not a valid number");
+                else
+                    return -1;
             }
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException("idk but thats bad");
-
-                availableQnty.Text = value.ToString();
-            }
+            set { availableQnty.Text = value.ToString(); }
         }
 
         private int newMinQnty
         {
             get
             {
-                bool pass;
                 int num;
-                if (minimumQnty.Text == string.Empty)
-                    return -1;
-
+                bool pass;
                 pass = int.TryParse(minimumQnty.Text, out num);
-                if (pass && num >= 0)
+
+                if (pass)
                     return num;
-
-                throw new ArgumentOutOfRangeException("Error. Minimum Quantity is not a valid number");
+                else
+                    return -1;
             }
-            set
-            {
-                if (value < 0)
-                    throw new ArgumentException("idk but thats bad");
-
-                minimumQnty.Text = value.ToString();
-            }
+            set { minimumQnty.Text = value.ToString(); }
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -147,7 +131,7 @@ namespace InventoryTracker
             (((e.OriginalSource as Button).Parent as Grid).Parent as Window).Close();
         }
 
-        private void numValidation(object sender, TextCompositionEventArgs e)
+        private void NumValidation(object sender, TextCompositionEventArgs e)
         {
             Regex reg = new Regex("[^0-9]+");
             e.Handled = reg.IsMatch(e.Text);
