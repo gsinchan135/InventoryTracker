@@ -54,6 +54,12 @@ namespace InventoryTracker {
             }
             _contentLoaded = true;
             
+            #line 6 "..\..\..\App.xaml"
+            this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(this.Application_DispatcherUnhandledException);
+            
+            #line default
+            #line hidden
+            
             #line 5 "..\..\..\App.xaml"
             this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
             

@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Margin="10 0" Width="110">Available Quantity:</TextBlock>
-            <TextBox Width="100" Grid.Column="1" x:Name="availableQnty" PreviewTextInput="numValidation"></TextBox>
+            <TextBox Width="100" Grid.Column="1" x:Name="availableQnty" PreviewTextInput="NumValidation"></TextBox>
         </Grid>
         <Grid Grid.Row="5" Margin="10">
             <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Margin="10 0" Width="110">Minimum Quantity:</TextBlock>
-            <TextBox Width="100" Grid.Column="1" x:Name="minimumQnty" PreviewTextInput="numValidation"/>
+            <TextBox Width="100" Grid.Column="1" x:Name="minimumQnty" PreviewTextInput="NumValidation"/>
         </Grid>
 
         <Button Grid.Row="6" Margin="10 0" Padding="10 0" HorizontalAlignment="Left" x:Name="saveBtn" Click="saveBtn_Click">Save</Button>

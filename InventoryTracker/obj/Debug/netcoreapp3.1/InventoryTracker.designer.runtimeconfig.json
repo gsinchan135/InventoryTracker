@@ -6,7 +6,7 @@
       "version": "3.1.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\grego\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\reiss\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\grego\\.nuget\\packages"
     ],
     "configProperties": {
