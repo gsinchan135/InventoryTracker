@@ -17,7 +17,7 @@
 
 
         <ListBox x:Name="showInventory" 
-    ScrollViewer.VerticalScrollBarVisibility="Visible"
+        ScrollViewer.VerticalScrollBarVisibility="Visible"
                  ScrollViewer.CanContentScroll="False" 
                  ItemsSource="{Binding}">
             <ListBox.ItemContainerStyle>
@@ -28,46 +28,52 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <GroupBox Header="{Binding ItemName}" Padding="20 5">
-                        <!--<GroupBox.Background>
-                            <ImageBrush ImageSource="Images/shelf1.png"/>
-                        </GroupBox.Background>-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Orientation="Horizontal" x:Name="xQuantity">
-                                <TextBlock Text="Quantity: "/>
-                                <TextBlock Text="{Binding AvailableQuantity}"/>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Quantity: "/>
+                                    <TextBlock Text="{Binding AvailableQuantity}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" x:Name="xQuantity">
+                                    <Button Content="+" Width="30" Margin="0 0 5 0" Click="changeQuantity"  x:Name="increaseItem" Style="{StaticResource changeColorGreen}"/>
+                                    <Button Content="-" Width="30" Margin="0 0 5 0" Click="changeQuantity" x:Name="decreaseItem" Style="{StaticResource changeColorRed}"/>
+                                </StackPanel>
                             </StackPanel>
 
-                            <StackPanel Grid.Column="1" Orientation="Horizontal" x:Name="xMinQnty">
-                                <TextBlock Text="Minimum: "/>
-                                <TextBlock Text="{Binding MinimumQuantity}"/>
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal" x:Name="xMinQnty">
+                                    <TextBlock Text="Minimum: "/>
+                                    <TextBlock Text="{Binding MinimumQuantity}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" x:Name="xLocation">
+                                    <TextBlock Text="Location: "/>
+                                    <TextBlock Text="{Binding Location}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            
+                            <StackPanel Grid.Column="2">
+                                <StackPanel Orientation="Horizontal" x:Name="xCategory">
+                                    <TextBlock Text="Category: "/>
+                                    <TextBlock Text="{Binding Category}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" x:Name="Supplier">
+                                    <TextBlock Text="Supplier: "/>
+                                    <TextBlock Text="{Binding Supplier}"/>
+                                </StackPanel>
                             </StackPanel>
 
-                            <StackPanel Grid.Column="2" Orientation="Horizontal" x:Name="xLocation">
-                                <TextBlock Text="Location: "/>
-                                <TextBlock Text="{Binding Location}"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="3" Orientation="Horizontal" x:Name="xCategory">
-                                <TextBlock Text="Category: "/>
-                                <TextBlock Text="{Binding Category}"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="4" Orientation="Horizontal" x:Name="Supplier">
-                                <TextBlock Text="Supplier: "/>
-                                <TextBlock Text="{Binding Supplier}"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="Edit" Click="UpdateItem" Margin="0 0 2 0" Width="50"/>
-                                <Button Content="Remove" Click="RemoveItem" Margin="2 0 0 0" Width="50" />
+                           
+                            <StackPanel Grid.Column="3" HorizontalAlignment="Right">
+                                <Button Content="Edit" Click="UpdateItem" Margin="0 0 0 0" Width="50"/>
+                                <Button Content="Remove" Click="RemoveItem" Margin="0 0 0 0" Width="50" />
                             </StackPanel>
 
                         </Grid>

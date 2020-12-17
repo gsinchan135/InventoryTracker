@@ -81,6 +81,7 @@ namespace InventoryTracker.Models
             string supplier;
             string category;
 
+
             //File data must come in rows of 6 values, each seperated by a comma(,)
             //specifically: string, int, int, string/int , string, string, string
             if (File.Exists(fileName))
