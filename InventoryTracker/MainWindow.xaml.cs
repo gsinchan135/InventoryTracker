@@ -129,10 +129,18 @@ namespace InventoryTracker
         private void changeQuantity(object sender, RoutedEventArgs e)
         {
             Item item = (Item)(((((e.OriginalSource as Button).Parent as StackPanel).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
-            if (((Button)sender).Name == "increaseItem")
-                item.SetQuantity(1);
-            else
-                item.SetQuantity(-1);
+
+            try
+            {
+                if (((Button)sender).Name == "increaseItem")
+                    item.AvailableQuantity += 1;
+                else
+                    item.AvailableQuantity -= 1;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Invalid data", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             showInventory.Items.Refresh();
         }

@@ -113,9 +113,5 @@ namespace InventoryTracker.Models
                 _minimumQuantity = value;
             }
         }
-        public void SetQuantity(int value)
-        {
-            _availableQuantity += value;
-        }
     }
 }

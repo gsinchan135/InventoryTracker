@@ -45,3 +45,6 @@ C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netc
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.g.cs
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.baml
 C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.g.cs
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\ItemWindow.baml
