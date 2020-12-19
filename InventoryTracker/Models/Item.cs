@@ -16,11 +16,11 @@ namespace InventoryTracker.Models
         public Item(string itemName, int availableQuantity, int minimumQuantity, string location, string supplier, string category)
         {
             ItemName = itemName;
-            AvailableQuantity = availableQuantity;
-            MinimumQuantity = minimumQuantity;
+            Category = category;
             Location = location;
             Supplier = supplier;
-            Category = category;
+            AvailableQuantity = availableQuantity;
+            MinimumQuantity = minimumQuantity;
         }
 
         //used for enumerating load
@@ -96,7 +96,7 @@ namespace InventoryTracker.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Field cannot be empty.", "Available Quantity.");
+                    throw new ArgumentOutOfRangeException("Available Quantity.", "Field cannot be empty.");
 
                 _availableQuantity = value;
             }
@@ -108,7 +108,7 @@ namespace InventoryTracker.Models
             set
             {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("Field cannot be empty.", "Minimum Quantity.");
+                    throw new ArgumentOutOfRangeException("Minimum Quantity.", "Field cannot be empty.");
 
                 _minimumQuantity = value;
             }

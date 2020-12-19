@@ -19,33 +19,24 @@ namespace InventoryTracker
     /// </summary>
     public partial class ItemWindow : Window
     {
-        public ItemWindow(object obj, object temp,  bool windowType)
+        private bool windowType;
+        private object obj;
+        private object obj2;
+
+        public ItemWindow(object obj, object obj2,  bool windowType)
         {
             //windowType = true = adding a new item to the inventory
             //windowType = false = updating an item already in the inventory
             InitializeComponent();
             cmbCategories.ItemsSource = Enum.GetValues(typeof(Item.Categories));
+            this.windowType = windowType;
+            this.obj = obj;
+            this.obj2 = obj2;
 
-            if (windowType)
+            //reloading information for edit
+            if (!this.windowType)
             {
-                ShowDialog();
-                Inventory inventory = obj as Inventory;
-                
-                try
-                {
-                    Item anitem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
-
-                    inventory.AddItem(anitem);
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            else
-            {
-                Item item = obj as Item;
-                Inventory inventory = temp as Inventory;
+                Item item = this.obj as Item;
 
                 newName = item.ItemName;
                 newAvailableQnty = item.AvailableQuantity;
@@ -56,19 +47,9 @@ namespace InventoryTracker
                 _ = Enum.TryParse(typeof(Item.Categories), item.Category, out object category);
 
                 cmbCategories.SelectedIndex = (int)category;
-
-                ShowDialog();
-                Item newItem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
-
-                try
-                {
-                    inventory.UpdateItem(item, newItem);
-                }
-                catch (Exception error)
-                {
-                    MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
             }
+
+            ShowDialog();
         }
 
         private string newName
@@ -129,7 +110,46 @@ namespace InventoryTracker
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
         {
-            (((e.OriginalSource as Button).Parent as Grid).Parent as Window).Close();
+            bool closeWindow = false;
+
+            if (windowType)
+            {
+                Inventory inventory = obj as Inventory;
+
+                try
+                {
+                    Item anitem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
+
+                    inventory.AddItem(anitem);
+
+                    closeWindow = true;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                Inventory inventory = obj2 as Inventory;
+                Item item = obj as Item;
+
+                try
+                {
+                    Item newItem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
+
+                    inventory.UpdateItem(item, newItem);
+
+                    closeWindow = true;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            if (closeWindow)
+                (((e.OriginalSource as Button).Parent as Grid).Parent as Window).Close();
         }
 
         private void NumValidation(object sender, TextCompositionEventArgs e)

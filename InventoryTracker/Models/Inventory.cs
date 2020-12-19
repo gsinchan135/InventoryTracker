@@ -9,25 +9,23 @@ namespace InventoryTracker.Models
     {
         public Inventory()
         {
-            GetItems = new List<Item>();
+            ItemList = new List<Item>();
         }
-        //make read only
-        public List<Item> GetItems { get; }
+
+        public List<Item> ItemList { get; }
 
         public void AddItem(Item item)
         {
-            GetItems.Add(item);
+            ItemList.Add(item);
         }
 
         public void RemoveItem(Item itemToRemove)
         {
-            GetItems.Remove(itemToRemove);
+            ItemList.Remove(itemToRemove);
         }
 
         public void UpdateItem(Item oldItem, Item updatedItem)
         {
-            //go field by field and change fields
-
             oldItem.ItemName = updatedItem.ItemName;
             oldItem.AvailableQuantity = updatedItem.AvailableQuantity;
             oldItem.MinimumQuantity = updatedItem.MinimumQuantity;
@@ -40,11 +38,11 @@ namespace InventoryTracker.Models
         {
             StringBuilder report = new StringBuilder();
             report.AppendLine("~-~-~ General Report ~-~-~");
-            for(int i = 0; i < GetItems.Count; i++)
+            for(int i = 0; i < ItemList.Count; i++)
             {
-                report.AppendLine("Item Name: " + GetItems[i].ItemName);
-                report.AppendLine("Available Quantity: " + GetItems[i].AvailableQuantity);
-                report.AppendLine("Minimum Quantity: " + GetItems[i].MinimumQuantity + "\n");
+                report.AppendLine("Item Name: " + ItemList[i].ItemName);
+                report.AppendLine("Available Quantity: " + ItemList[i].AvailableQuantity);
+                report.AppendLine("Minimum Quantity: " + ItemList[i].MinimumQuantity + "\n");
             }
 
             return report.ToString();
@@ -54,13 +52,13 @@ namespace InventoryTracker.Models
         {
             StringBuilder shoppingList = new StringBuilder();
             shoppingList.AppendLine("~-~-~ Shopping List ~-~-~");
-            for (int i = 0; i < GetItems.Count; i++)
+            for (int i = 0; i < ItemList.Count; i++)
             {
-                if(GetItems[i].AvailableQuantity < GetItems[i].MinimumQuantity)
+                if(ItemList[i].AvailableQuantity < ItemList[i].MinimumQuantity)
                 {
-                    shoppingList.AppendLine("Item Name: " + GetItems[i].ItemName);
-                    shoppingList.AppendLine("Available Quantity: " + GetItems[i].AvailableQuantity);
-                    shoppingList.AppendLine("Minimum Quantity: " + GetItems[i].MinimumQuantity + "\n");
+                    shoppingList.AppendLine("Item Name: " + ItemList[i].ItemName);
+                    shoppingList.AppendLine("Available Quantity: " + ItemList[i].AvailableQuantity);
+                    shoppingList.AppendLine("Minimum Quantity: " + ItemList[i].MinimumQuantity + "\n");
                 }
             }
 
@@ -69,7 +67,7 @@ namespace InventoryTracker.Models
 
         public void LoadData(string fileName)
         {
-            GetItems.Clear();
+            ItemList.Clear();
     
             string line;
             string[] values = null;
@@ -105,7 +103,7 @@ namespace InventoryTracker.Models
                         category = values[(int)Item.itemData.category];
 
                         anItem = new Item(itemName, itemQnty, minQnty, location, supplier, category);
-                        this.GetItems.Add(anItem);
+                        ItemList.Add(anItem);
                     }                    
                  }
             }
@@ -115,14 +113,14 @@ namespace InventoryTracker.Models
         {
             //StreamWriter streamWriter = null;
             StringBuilder builder = new StringBuilder();
-            for(int i = 0; i < GetItems.Count; i++)
+            for(int i = 0; i < ItemList.Count; i++)
             {
-                builder.Append(GetItems[i].ItemName + ",");
-                builder.Append(GetItems[i].AvailableQuantity + ",");
-                builder.Append(GetItems[i].MinimumQuantity + ",");
-                builder.Append(GetItems[i].Location + ",");
-                builder.Append(GetItems[i].Supplier + ",");
-                builder.AppendLine(GetItems[i].Category);
+                builder.Append(ItemList[i].ItemName + ",");
+                builder.Append(ItemList[i].AvailableQuantity + ",");
+                builder.Append(ItemList[i].MinimumQuantity + ",");
+                builder.Append(ItemList[i].Location + ",");
+                builder.Append(ItemList[i].Supplier + ",");
+                builder.AppendLine(ItemList[i].Category);
             }
 
             using StreamWriter sr = new StreamWriter(fileName, false);

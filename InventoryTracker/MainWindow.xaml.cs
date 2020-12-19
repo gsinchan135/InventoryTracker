@@ -29,7 +29,7 @@ namespace InventoryTracker
         public MainWindow()
         {
             InitializeComponent();
-            showInventory.ItemsSource = inv.GetItems;
+            showInventory.ItemsSource = inv.ItemList;
             
 
         }
@@ -75,7 +75,7 @@ namespace InventoryTracker
 
         private void LoadData(object sender, RoutedEventArgs e)
         {
-            if(inv.GetItems.Count > 0)
+            if(inv.ItemList.Count > 0)
             {
                 MessageBoxResult result = MessageBox.Show("Loading a file will erase all current data. Would you like to save?", "Load data", MessageBoxButton.YesNoCancel);
                 switch (result)
