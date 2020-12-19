@@ -53,8 +53,7 @@ namespace InventoryTracker
                 newLocation = item.Location;
                 newSupplier = item.Supplier;
 
-                object category;
-                _ = Enum.TryParse(typeof(Item.Categories), item.Category, out category);
+                _ = Enum.TryParse(typeof(Item.Categories), item.Category, out object category);
 
                 cmbCategories.SelectedIndex = (int)category;
 
