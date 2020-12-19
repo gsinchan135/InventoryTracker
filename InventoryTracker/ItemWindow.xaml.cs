@@ -33,7 +33,7 @@ namespace InventoryTracker
             this.obj = obj;
             this.obj2 = obj2;
 
-            //reloading information for edit
+            //reloading information of an Item for edit
             if (!this.windowType)
             {
                 Item item = this.obj as Item;
@@ -44,8 +44,10 @@ namespace InventoryTracker
                 newLocation = item.Location;
                 newSupplier = item.Supplier;
 
+                //matches a string to an existing enum and outs the index of that enum
                 _ = Enum.TryParse(typeof(Item.Categories), item.Category, out object category);
 
+                //the index is then used with the SelectedIndex property to show that index of the ItemsSource.
                 cmbCategories.SelectedIndex = (int)category;
             }
 
@@ -118,10 +120,14 @@ namespace InventoryTracker
 
                 try
                 {
+                    //uses properties to get the text input of the new window that opens up and creates an Item object in order to add to the inventory
                     Item anitem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
 
                     inventory.AddItem(anitem);
 
+                    //If one the inputs is not filled out, an error is thrown and closeWindow never equals true.
+                    //This is to avoid having the window automatically close if improperly filled out otherwise
+                    //it would close and the user would have to fill out the entire form again
                     closeWindow = true;
                 }
                 catch (Exception error)
@@ -136,6 +142,7 @@ namespace InventoryTracker
 
                 try
                 {
+                    //uses properties to get the text input of the new window and creates an Item object in order to update the inventory
                     Item newItem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
 
                     inventory.UpdateItem(item, newItem);
@@ -154,6 +161,7 @@ namespace InventoryTracker
 
         private void NumValidation(object sender, TextCompositionEventArgs e)
         {
+            //Only allows numbers to be inputted on available and minimum quantity as a safety feature
             Regex reg = new Regex("[^0-9]+");
             e.Handled = reg.IsMatch(e.Text);
         }
