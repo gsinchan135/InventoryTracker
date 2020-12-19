@@ -56,12 +56,11 @@ namespace InventoryTracker
                 newMinQnty = item.MinimumQuantity;
                 newLocation = item.Location;
                 newSupplier = item.Supplier;
-                string yes;
-                object maybe;
-                bool no = Enum.TryParse(typeof(Item.Categories), item.Category, out maybe);
-          
-                cmbCategories.SelectedIndex = 0;
-                //newCategory = item.Category;
+
+                object category;
+                _ = Enum.TryParse(typeof(Item.Categories), item.Category, out category);
+
+                cmbCategories.SelectedIndex = (int)category;
 
                 ShowDialog();
                 Item newItem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);

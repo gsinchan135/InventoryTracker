@@ -1,18 +1,18 @@
 ﻿InventoryTracker
-
+1.0.0.0
 
 winexe
 C#
 .cs
-C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\obj\Debug\netcoreapp3.1\
 InventoryTracker
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\grego\Desktop\InventoryTracker\InventoryTracker\App.xaml
+C:\Users\reiss\Documents\GitHub\InventoryTracker\InventoryTracker\App.xaml
 41817338626
 
-9-1945470381
+10-1806217651
 1921654412462
 GeneralReport.xaml;ItemWindow.xaml;MainWindow.xaml;ShoppingList.xaml;
 
