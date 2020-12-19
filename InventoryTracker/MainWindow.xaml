@@ -21,6 +21,7 @@
                  ScrollViewer.CanContentScroll="False" 
                  ItemsSource="{Binding}">
             <ListBox.ItemContainerStyle>
+
                 <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>

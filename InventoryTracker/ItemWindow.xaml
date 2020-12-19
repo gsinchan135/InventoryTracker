@@ -24,7 +24,7 @@
             <TextBox Height="20" x:Name="item"></TextBox>
         </GroupBox>
         <GroupBox Header="Category" Grid.Row="1" Margin="10">
-            <ComboBox x:Name="cmbCategories" Height="25" SelectedValue="{Binding UserType, Mode=TwoWay}" ItemsSource="{Binding Categories}"/>
+            <ComboBox x:Name="cmbCategories" Height="25"/>
         </GroupBox>
         <GroupBox Header="Location" Grid.Row="2" Margin="10">
             <TextBox Height="20" x:Name="location"></TextBox>

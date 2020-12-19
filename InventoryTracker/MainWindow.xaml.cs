@@ -30,12 +30,13 @@ namespace InventoryTracker
         {
             InitializeComponent();
             showInventory.ItemsSource = inv.GetItems;
+            
 
         }
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
-            ItemWindow addItem = new ItemWindow(inv,true);
+            ItemWindow addItem = new ItemWindow(inv, null,true);
             showInventory.Items.Refresh();
         }
 
@@ -49,9 +50,8 @@ namespace InventoryTracker
         private void UpdateItem(object sender, RoutedEventArgs e)
         {
             Item oldItem = (Item)((((e.OriginalSource as Button).Parent as StackPanel).Parent as Grid).Children[0] as StackPanel).DataContext;
-            ItemWindow update = new ItemWindow(oldItem, false);
+            ItemWindow update = new ItemWindow(oldItem, inv, false);
             showInventory.Items.Refresh();
-
         }
 
         private void CreateGeneralReport(object sender, RoutedEventArgs e)

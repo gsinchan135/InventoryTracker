@@ -19,7 +19,11 @@ namespace InventoryTracker
     /// </summary>
     public partial class ItemWindow : Window
     {
-        public ItemWindow(object obj, bool windowType)
+        public string theCategory
+        {
+            get; set;
+        }
+        public ItemWindow(object obj, object temp,  bool windowType)
         {
             //windowType = true = adding a new item to the inventory
             //windowType = false = updating an item already in the inventory
@@ -45,25 +49,28 @@ namespace InventoryTracker
             else
             {
                 Item item = obj as Item;
+                Inventory inventory = temp as Inventory;
 
                 newName = item.ItemName;
                 newAvailableQnty = item.AvailableQuantity;
                 newMinQnty = item.MinimumQuantity;
                 newLocation = item.Location;
                 newSupplier = item.Supplier;
-                newCategory = item.Category;
+                string yes;
+                object maybe;
+                bool no = Enum.TryParse(typeof(Item.Categories), item.Category, out maybe);
+          
+                cmbCategories.SelectedIndex = 0;
+                //newCategory = item.Category;
+
                 ShowDialog();
+                Item newItem = new Item(newName, newAvailableQnty, newMinQnty, newLocation, newSupplier, newCategory);
 
                 try
                 {
-                    item.ItemName = newName;
-                    item.AvailableQuantity = newAvailableQnty;
-                    item.MinimumQuantity = newMinQnty;
-                    item.Location = newLocation;
-                    item.Supplier = newSupplier;
-                    item.Category = newCategory;
+                    inventory.UpdateItem(item, newItem);
                 }
-                catch(Exception error)
+                catch (Exception error)
                 {
                     MessageBox.Show(error.Message, "Invalid Input", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
