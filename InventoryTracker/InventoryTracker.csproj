@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Images\**" />
-    <EmbeddedResource Remove="Images\**" />
-    <None Remove="Images\**" />
-    <Page Remove="Images\**" />
+    <None Remove="Images\cow1.png" />
+    <None Remove="Images\jac_logo.jpg" />
+    <None Remove="Images\mainIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\cow1.png" />
+    <Resource Include="Images\jac_logo.jpg" />
   </ItemGroup>
 
 </Project>

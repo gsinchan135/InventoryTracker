@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryTracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="JAC Inventory" Height="450" Width="800"
+        Icon="Images/jac_logo.jpg">
 
 
     <Grid>
@@ -16,19 +17,42 @@
         </Grid.RowDefinitions>
 
 
-        <ListBox x:Name="showInventory" 
+        <ListBox x:Name="showInventory"
         ScrollViewer.VerticalScrollBarVisibility="Visible"
                  ScrollViewer.CanContentScroll="False" 
                  ItemsSource="{Binding}">
-            <ListBox.ItemContainerStyle>
-
-                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <!-- See https://blog.jerrynixon.com/2011/07/showing-no-records-when-wpf-listbox-is.html 
+            for over laying textbox on list box
+            Gets count of list box and if it's zero, it adds a textblock-->
+            <ListBox.Style>
+                <Style TargetType="{x:Type ListBox}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Items.Count,
+                    RelativeSource={RelativeSource Self}}"  Value="0">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            
+                                            <Image Width="300" Source="Images/cow1.png" Opacity="0.3" ></Image>
+                                            <TextBlock HorizontalAlignment="Center" Opacity="0.8">Looks like you have no items...</TextBlock>
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
+            </ListBox.Style>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />    
+                </Style>
+
             </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <GroupBox Header="{Binding ItemName}" Padding="20 5">
+                    <GroupBox Header="{Binding ItemName}" Padding="20 5" Background="#5DBDD5" FontWeight="SemiBold">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -72,9 +96,25 @@
                             </StackPanel>
 
                            
-                            <StackPanel Grid.Column="3" HorizontalAlignment="Right">
-                                <Button Content="Edit" Click="UpdateItem" Margin="0 0 0 0" Width="50"/>
-                                <Button Content="Remove" Click="RemoveItem" Margin="0 0 0 0" Width="50" />
+                            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 0">
+                                <Button Style="{StaticResource hideHighlight}" Click="UpdateItem" Margin="0 0 1 0" Width="100" Height="auto" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                                    <Button.Content>
+                                        <Border CornerRadius="5" Padding="10" BorderBrush="Black" BorderThickness="1" Width="50">
+                                            <TextBlock HorizontalAlignment="Center">
+                                                Edit
+                                            </TextBlock>
+                                        </Border>
+                                    </Button.Content>
+                                </Button>
+                                <Button Style="{StaticResource hideHighlight}" Click="RemoveItem" Margin="1 0 0 0" Width="100" Height="auto" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                                    <Button.Content>
+                                        <Border CornerRadius="5" Padding="10" BorderBrush="Black" BorderThickness="1" Width="80">
+                                            <TextBlock HorizontalAlignment="Center">
+                                                Remove
+                                            </TextBlock>
+                                        </Border>
+                                    </Button.Content>
+                                </Button>
                             </StackPanel>
 
                         </Grid>
@@ -93,11 +133,51 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="General Report" Margin="20" Click="CreateGeneralReport"/>
-            <Button Content="Shopping List" Grid.Column="1" Margin="20" Click="CreateShoppingList"/>
-            <Button Content="Add Item" Grid.Column="2" Margin="20" Click="AddItem"/>
-            <Button Content="Load" Grid.Column="3" Margin="20" Click="LoadData"/>
-            <Button Content="Save" Grid.Column="4" Margin="20" Click="SaveData"/>
+            <Button Style="{StaticResource hideHighlight}" Margin="20" Click="CreateGeneralReport" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                <Button.Content>
+                    <Border CornerRadius="5" Padding="10" Background="#E9BDE6" BorderBrush="Black" BorderThickness="1" Width="105">
+                        <TextBlock HorizontalAlignment="Center">
+                             General Report
+                        </TextBlock>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource hideHighlight}" Grid.Column="1" Margin="20" Click="CreateShoppingList" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                <Button.Content>
+                    <Border CornerRadius="5" Padding="10" Background="#E9BDE6" BorderBrush="Black" BorderThickness="1" Width="105">
+                        <TextBlock HorizontalAlignment="Center">
+                            Shopping List                        
+                        </TextBlock>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource hideHighlight}" Grid.Column="2" Margin="20" Click="AddItem" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                <Button.Content>
+                    <Border CornerRadius="5" Padding="10" Background="#E9BDE6" BorderBrush="Black" BorderThickness="1" Width="105">
+                        <TextBlock HorizontalAlignment="Center">
+                            Add Item
+                        </TextBlock>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource hideHighlight}" Grid.Column="3" Margin="20" Click="LoadData" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                <Button.Content>
+                    <Border CornerRadius="5" Padding="10" Background="#E9BDE6" BorderBrush="Black" BorderThickness="1" Width="105">
+                        <TextBlock HorizontalAlignment="Center">
+                            Load Data
+                        </TextBlock>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource hideHighlight}" Grid.Column="4" Margin="20" Click="SaveData" Background="Transparent" BorderBrush="Transparent" Cursor="Hand">
+                <Button.Content>
+                    <Border CornerRadius="5" Padding="10" Background="#E9BDE6" BorderBrush="Black" BorderThickness="1" Width="105">
+                        <TextBlock HorizontalAlignment="Center">
+                            Save Data
+                        </TextBlock>
+                    </Border>
+                </Button.Content>
+            </Button>
 
         </Grid>
     </Grid>
