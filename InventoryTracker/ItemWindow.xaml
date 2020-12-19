@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:InventoryTracker"
         
         mc:Ignorable="d"
-        Title="ItemWindow" Height="450" Width="400">
+        Title="ItemWindow" Height="450" Width="400"
+        Icon="Images/jac_logo.jpg">
     
     <Grid>
         

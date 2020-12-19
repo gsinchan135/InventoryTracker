@@ -30,8 +30,6 @@ namespace InventoryTracker
         {
             InitializeComponent();
             showInventory.ItemsSource = inv.ItemList;
-            
-
         }
 
         private void AddItem(object sender, RoutedEventArgs e)
