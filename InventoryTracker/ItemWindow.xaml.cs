@@ -19,10 +19,6 @@ namespace InventoryTracker
     /// </summary>
     public partial class ItemWindow : Window
     {
-        public string theCategory
-        {
-            get; set;
-        }
         public ItemWindow(object obj, object temp,  bool windowType)
         {
             //windowType = true = adding a new item to the inventory
